@@ -145,12 +145,6 @@ export default class MaterialSwitch extends Component {
     });
   }
 
-  componentWillReceiveProps (nextProps) {
-    if(this.state.state !== nextProps.active){
-      nextProps.active ? this.activate() : this.deactivate()
-    }
-  }
-
   onSwipe = (currentPosition, startingPosition, onChange, onTerminate) => {
     if (currentPosition - startingPosition >= 0) {
       if (currentPosition - startingPosition > this.state.width / 2 || startingPosition === this.state.width) {
@@ -230,7 +224,7 @@ export default class MaterialSwitch extends Component {
     return (
       <View
         {...panHandlers}
-        style={[{padding: this.padding, position: 'relative'}, this.props.style]}>
+        style={[{padding: this.padding, position: 'relative', width: this.props.switchWidth}, this.props.style]}>
         <View
           style={{
             backgroundColor: this.state.state ? this.props.activeBackgroundColor : this.props.inactiveBackgroundColor,
